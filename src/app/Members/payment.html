@@ -1,0 +1,44 @@
+<div>
+    <form (submit)="addPayment()" #memberForm="ngForm">
+
+        <!--<span [hidden]="member.email.valid" class="badge badge-warning">Required</span>-->
+        <div class="form-inline">
+            <label for="paydate">date of payment</label>
+            <input required [(ngModel)]="pay.receivedDate" id="paydate" name="payDate" type="date" class="form-control" size="10">
+            <label for="amt">Amount</label>
+            <input required [(ngModel)]="pay.amount" id="amt" name="amount" type="date" class="form-control" size="10">
+            <label for="typ">Type</label>
+            <input required [(ngModel)]="pay.type" id="typ" name="type" type="text" class="form-control" size="10">
+
+        </div>
+        <div class="submit">
+            <button type="submit" class="btn-custom">{{mode}}</button>
+        </div>
+
+    </form>
+</div>
+<div>
+        <table class="itemtable">
+            <tr>
+                <th>pay date</th>
+                <th>amount</th>
+                <th>active</th>
+                <th class="makeroom">  </th>
+                <th>add</th>
+                <th>remove</th>
+
+
+            </tr>
+            <tr  *ngFor="let pay of payments" [class.itemselected]="item === selectedItem" (click)="onPaymentTable(pay)">
+
+                <td> {{pay.receivedDate}} </td>
+                <td> ${{pay.amount}}</td>
+
+                <td class="makeroom">  </td>
+                <td class="price"><button id="Select" class="btn">Select</button></td>
+                <td class="price"><button id="add" class="btn">Add</button></td>
+                <td class="price"><button id="delete" class="btn">Delete</button></td>
+
+            </tr>
+        </table>
+</div>

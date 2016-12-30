@@ -18,6 +18,12 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
+import { MemberlistComponent } from './Members';
+import { MaintenanceComponent } from './Members';
+import { ExtendedMembersComponent } from './Members';
+import { PaymentComponent } from './Members';
+import {MemberlistModule} from "./Members";
+
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -31,6 +37,8 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
+
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -40,6 +48,10 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+   /* MemberlistComponent,
+    MaintenanceComponent,
+    ExtendedMembersComponent,
+    PaymentComponent,*/
     NoContentComponent,
     XLarge
   ],
@@ -47,6 +59,7 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
+    MemberlistModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection

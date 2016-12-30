@@ -1,0 +1,109 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-list"></i> Member List &nbsp;<span class="badge">{{membercount}} mode: {{mode}} </span>  </h3>
+      <h3 class="deal"></h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+<!--
+            <div class="deal">
+                form data  email   {{member.email}}
+            </div>
+-->
+            <div class="form-group">
+
+                <form (submit)="submitForm()" #memberForm="ngForm">
+
+                    <!--<span [hidden]="member.email.valid" class="badge badge-warning">Required</span>-->
+                    <div class="form-inline">
+                        <label for="email">Email</label>
+                        <input required [(ngModel)]="member.email" id="Email" name="memberName" type="text" class="form-control" size="20">
+                    </div>
+                    <div class="form-inline">
+                        <label for="fn">First Name</label>
+                        <input required [(ngModel)]="member.firstName" id="fn" name="firstName" type="text" class="form-control" size="15">
+                        <label for="ln">Last Name</label>
+                        <input required [(ngModel)]="member.lastName" id="ln" name="lastName" type="text" class="form-control" size="15">
+                    </div>
+                    <div class="form-inline">
+                        <label for="addr">Address</label>
+                        <input [(ngModel)]="member.address" id="addr" name="address" type="text" class="form-control" size="30">
+                    </div>
+                    <div class="form-inline">
+                        <label for="city">City</label>
+                        <input [(ngModel)]="member.city" id="city" name="city" type="text" class="form-control" size="20">
+                        <label for="state">State</label>
+                        <input [(ngModel)]="member.state" id="state" name="state" type="text" class="form-control" size="5">
+                        <label for="zip">Zip</label>
+                        <input [(ngModel)]="member.zip" id="zip" name="zip" type="text" class="form-control" size="10">
+                    </div>
+                    <div class="form-inline">
+                        <label for="ph">Phone</label>
+                        <input [(ngModel)]="member.phone" id="ph" name="phone" type="text" class="form-control" size="20">
+                        <label for="active">Active</label>
+                        <input [(ngModel)]="member.active" id="active" name="active" type="checkbox" class="form-control" size="5">
+                    </div>
+                    <div class="form-inline">
+                        <label for="skills">Skills</label>
+                        <input [(ngModel)]="member.skills" id="skills" name="skills" type="texxt"class="form-control" size="40">
+                    </div>
+                    <div class="submit">
+                        <button type="submit" class="btn-default">{{mode}}</button>
+                        <label>first Name: {{firstName}}</label>
+                    </div>
+                    <!--<label><input type="checkbox" [(ngModel)]="showCompleted" name="memberCompleted"> show completed</label>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+            <div>
+                <label for="selActive">is active</label>
+                <input type="checkbox" id="selActive" name="selActive" value="false" [(ngModel)]="activeFilter">
+                <label for="selfirstName">first name</label>
+                <input type="text" id="selfirstName" name="selfirstName" value="" size="6" [(ngModel)]="firstNameFilter">
+                <label for="sellastName">last name</label>
+                <input type="text" id="sellastName" name="sellastName" value="" size="6" [(ngModel)]="lastNameFilter">
+            </div>
+            <table class="itemtable">
+                <tr>
+                    <th>first name</th>
+                    <th>last name</th>
+                    <th>active</th>
+                    <th class="makeroom">  </th>
+                    <th>add</th>
+                    <th>remove</th>
+                    <th>payments</th>
+                    <th>extended members</th>
+
+                </tr>
+                <tr  *ngFor="let al of (memberlist | asFilter:activeFilter:firstNameFilter:lastNameFilter);" [class.itemselected]="item === selectedItem" (click)="onUsingTable(al)">
+
+                    <td> {{al.firstName}} </td>
+                    <td> {{al.lastName}} </td>
+                    <td>{{al.active}}</td>
+                    <td class="makeroom">  </td>
+                    <td class="price"><button id="Select" class="btn">Select</button></td>
+                    <td class="price"><button id="Remove" class="btn">Remove</button></td>
+                    <td class="price"><button id="Payments" class="btn">Payments</button></td>
+                    <td class="price"><button id="ems" class="btn">extended members</button></td>
+                    <!--<td class="price"><a [routerLink]="['/ems', al]"> extended members</a></td>-->
+                </tr>
+            </table>
+            <!--<ul class="list-group">
+                <li *ngFor="let member of memberlist; let i=index" class="list-group-item">
+                <span title="Remove member" class="badge" (click)="delMember(i) ">x</span>
+                <label><input type="checkbox" [(ngModel)]="member.completed" name="memberDone"> {{member.email}}</label>
+                </li>
+            </ul>-->
+        </div>
+        <div class="col-md-5">
+           <as-payment [payments]="getPayments()"></as-payment>
+        </div>
+    </div>
+  </div>
+</div>

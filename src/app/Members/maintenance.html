@@ -1,0 +1,22 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+
+        <table class="itemtable">
+        <tr>
+            <th>filter name</th>
+            <th>filter</th>
+            <th>convert</th>
+            <th>more</th>
+        </tr>
+        <tr [class.itemselected]="item === selectedItem" (click)="onUsingTable(al)">
+            <td class="price"><input type="text" class="btn" [(ngModel)]="filterName">name</td>
+            <td class="price"><button id="filter" class="btn">filter</button></td>
+            <td class="price"><button id="runconvert" class="btn">run converter</button></td>
+            <td class="price"><button id="reconcile" class="btn">reconcile</button></td>
+        </tr>
+
+        </table>
+        </div>
+    </div>
+</div>

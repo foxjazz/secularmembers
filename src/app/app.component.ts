@@ -24,14 +24,14 @@ import { AppState } from './app.service';
       </span>
       |
       <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
+        <a [routerLink]=" ['./memberlist'] ">
+          MemberList
         </a>
       </span>
       |
       <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
+        <a [routerLink]=" ['./maintenance'] ">
+          Maintenance
         </a>
       </span>
       |

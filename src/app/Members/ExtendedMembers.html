@@ -1,0 +1,73 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="deal">
+                form data  email   {{member.email}}
+            </div>
+            <div class="form-group">
+                <form (submit)="submitForm()" #memberForm="ngForm">
+
+                    <!--<span [hidden]="member.email.valid" class="badge badge-warning">Required</span>-->
+                    <div class="form-inline">
+                        <label for="member">Email</label>
+                        <input required [(ngModel)]="em.email" id="member" name="memberName" type="text" class="form-control" size="20">
+                    </div>
+                    <div class="form-inline">
+                        <label for="fn">First Name</label>
+                        <input required [(ngModel)]="em.firstName" id="fn" name="firstName" type="text" class="form-control" size="15">
+                        <label for="ln">Last Name</label>
+                        <input required [(ngModel)]="em.lastName" id="ln" name="lastName" type="text" class="form-control" size="15">
+                    </div>
+                    <div class="form-inline">
+                        <label for="addr">Address</label>
+                        <input [(ngModel)]="em.address" id="addr" name="address" type="text" class="form-control" size="30">
+                    </div>
+                    <div class="form-inline">
+                        <label for="city">City</label>
+                        <input [(ngModel)]="em.city" id="city" name="city" type="text" class="form-control" size="20">
+                        <label for="state">State</label>
+                        <input [(ngModel)]="em.state" id="state" name="state" type="text" class="form-control" size="5">
+                        <label for="zip">Zip</label>
+                        <input [(ngModel)]="em.zip" id="zip" name="zip" type="text" class="form-control" size="10">
+                    </div>
+                    <div class="form-inline">
+                        <label for="ph">Phone</label>
+                        <input [(ngModel)]="em.phone" id="ph" name="phone" type="text" class="form-control" size="20">
+                    </div>
+                    <div class="submit">
+                        <button type="submit" class="btn-custom">{{mode}}</button>
+
+                    </div>
+                    <!--<label><input type="checkbox" [(ngModel)]="showCompleted" name="memberCompleted"> show completed</label>-->
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="itemtable">
+                <tr>
+                    <th>first name</th>
+                    <th>last name</th>
+
+                    <th class="makeroom">  </th>
+                    <th>add</th>
+                    <th>remove</th>
+
+                </tr>
+                <tr  *ngFor="let al of ems" [class.itemselected]="item === selectedItem" (click)="onUsingTable(al)">
+
+                    <td> {{al.firstName}} </td>
+                    <td> {{al.lastName}} </td>
+                    <td class="makeroom">  </td>
+                    <td class="price"><button id="Select" class="btn">Select</button></td>
+                    <td class="price"><button id="Remove" class="btn">Remove</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <div>
+        <button id="save" class="btn" (click)="saveChanges()">SAVE CHANGES</button>
+    </div>
+</div>

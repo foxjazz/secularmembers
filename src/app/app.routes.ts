@@ -4,12 +4,17 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
 import { DataResolver } from './app.resolver';
+import {MemberlistComponent} from "./Members";
+import {ExtendedMembersComponent} from "./Members";
+import {MaintenanceComponent} from "./Members";
+
 
 
 export const ROUTES: Routes = [
-  { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
+  { path: '',      component: AboutComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'detail', loadChildren: './+detail/index#DetailModule'},
-  { path: '**',    component: NoContentComponent },
+  { path: 'memberlist', component: MemberlistComponent},
+  { path: 'extendedmembers', component: ExtendedMembersComponent},
+  { path: 'maintenance ', component: MaintenanceComponent},
+  { path: '**',    component: NoContentComponent }
 ];
